@@ -1,7 +1,13 @@
 # STRUKDAT
 
 ----
+### Run code
 
+- masuk folder run
+```powershell
+javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java ; java -cp . src.Main
+```
+![alt text](image.png)
 ### Penjelasan : 
 Sistem untuk antrian data di sebuah rumah sakit , jadi kita misalkan untuk node nya adalah tempat seperti poli , lab , apotek , dll . Terus kita bikin sestem menggunakna `bfs` dan `dijkstra`. `bfs` gunanya itu mencari node lainnya berdasarkan levelnya terus buat `dijkstra` itu untuk menentukan ruangan mana yang paling cepat dimasuki. Tiap edge merepresentasikan waktu  antar ruangan  lalu untuk tiap node ada antrian nya. Ada keadaan khusus ketika ada pasien gawat darurat setelah masuk igd ia bisa menyerobot orang yang antri di ruangan selanjutnya (contoh poli jantung).
 ![alt text](<Screenshot 2026-06-14 154706.png>)
