@@ -48,7 +48,6 @@ public class Main {
             System.out.println("1. Tambah pasien & daftarkan ke layanan pertama");
             System.out.println("2. Lihat antrian semua ruangan");
             System.out.println("3. Tampilkan struktur graph (BFS dari Ruang Tunggu)");
-            System.out.println("4. Simulasi maju waktu (proses event manual)");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = bacaInt();
@@ -61,9 +60,6 @@ public class Main {
                     break;
                 case 3:
                     graph.bfsTampilkanStruktur(0);
-                    break;
-                case 4:
-                    simulasiMajuWaktu();
                     break;
                 case 0:
                     System.out.println("Keluar...");
@@ -454,53 +450,6 @@ public class Main {
         // --- Proses HANYA tahap pertama ---
         // Tahap-tahap berikutnya akan diproses oleh refresh() saat event selesai
         prosesNextTahap(p, now);
-    }
-
-    // =========================================================
-    // SIMULASI MAJU WAKTU (untuk keperluan testing/demo)
-    // =========================================================
-
-    /**
-     * Menu 4: memungkinkan tester melompat ke waktu tertentu
-     * agar event yang sudah dijadwalkan bisa langsung diproses
-     * tanpa harus menunggu detik nyata berlalu.
-     *
-     * CATATAN: dalam produksi nyata menu ini tidak diperlukan
-     * karena refresh() dipanggil otomatis setiap siklus menu.
-     */
-    static void simulasiMajuWaktu() {
-        System.out.println("\nWaktu simulasi sekarang: t=" + waktuSekarang());
-        System.out.println("Event terjadwal berikutnya:");
-        if (eventQueue.isEmpty()) {
-            System.out.println("  (tidak ada event)");
-            return;
-        }
-
-        // Tampilkan daftar event mendatang (hanya yang valid)
-        int tampil = 0;
-        for (Event ev : eventQueue) {
-            if (ev.valid) {
-                System.out.println("  t=" + ev.waktuSelesai
-                        + " | " + ev.pasien.nama
-                        + " selesai di " + graph.nodes.get(ev.ruanganId).nama);
-                tampil++;
-                if (tampil >= 10)
-                    break;
-            }
-        }
-
-        System.out.print("Proses event sampai t= ");
-        int target = bacaInt();
-        if (target < waktuSekarang()) {
-            System.out.println("Waktu target tidak boleh lebih kecil dari waktu sekarang.");
-            return;
-        }
-
-        // Override waktu simulasi: geser waktuMulaiSimulasi ke belakang
-        // sehingga waktuSekarang() langsung mengembalikan nilai target
-        waktuMulaiSimulasi -= (long) (target - waktuSekarang()) * 1000L;
-        System.out.println("→ Waktu maju ke t=" + waktuSekarang());
-        refresh(waktuSekarang());
     }
 
     // =========================================================
