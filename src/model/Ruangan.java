@@ -22,7 +22,6 @@ public class Ruangan {
         this.kategori = kategori;
         this.subKategori = subKategori;
         this.rataRataLayanan = rataRataLayanan;
-        this.kapasitas = kapasitas;
         this.lantai = lantai;
         this.antrian = new MaxHeapAntrian();
     }

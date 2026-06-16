@@ -45,10 +45,12 @@ public class Graph {
         visited.add(start);
         hop.put(start, 0);
         queue.add(start);
-
+        // System.out.println("================= TESTING BFS ============================");
         while (!queue.isEmpty()) {
+
             int cur = queue.poll();
             Ruangan r = nodes.get(cur);
+            // System.out.println(r.nama+"\n");
 
             if (cur != start && r.kategori.equals(kategori)
                     && (subKategori == null || subKategori.equals(r.subKategori))) {
@@ -57,6 +59,7 @@ public class Graph {
 
             for (int[] tetangga : adj.get(cur)) {
                 int next = tetangga[0];
+
                 if (!visited.contains(next)) {
                     visited.add(next);
                     hop.put(next, hop.get(cur) + 1);
