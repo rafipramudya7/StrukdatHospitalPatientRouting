@@ -21,3 +21,9 @@ javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java src/TestGr
 ```
 javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java src/TestMaxHeap.java ; java src.TestMaxHeap
 ```
+
+### Run Trace Heap
+
+```
+javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java src/TestEdgeCase.java ; java src.TestEdgeCase
+```
