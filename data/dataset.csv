@@ -1,0 +1,26 @@
+ID Ruangan,Nama Ruangan,Lantai,Avg Waktu Layanan (m)
+ID_00,Ruang Tunggu Utama,1,0
+ID_01,Pendaftaran & Kasir Utama,1,5
+ID_02,IGD (Instalasi Gawat Darurat),1,15
+ID_03,Ruang Triase,1,5
+ID_04,Laboratorium Darah,1,10
+ID_05,Ruang Radiologi & Rontgen,1,12
+ID_06,Apotek Utama,1,8
+ID_07,Lift Utama,1,1
+ID_08,Tangga Barat,1,2
+ID_09,Ruang Tunggu Poli,2,0
+ID_10,Poli Jantung,2,15
+ID_11,Poli Anak,2,10
+ID_12,Poli Dalam,2,12
+ID_13,Poli Mata,2,10
+ID_14,Poli Gigi,2,20
+ID_15,Apotek Satelit,2,5
+ID_16,Kasir Lantai 2,2,4
+ID_17,Ruang Rekam Medis,2,5
+ID_18,ICU (Intensive Care Unit),3,30
+ID_19,Ruang Operasi Utama,3,60
+ID_20,Ruang Isolasi,3,20
+ID_21,Rawat Inap Kelas 1,3,0
+ID_22,Rawat Inap VIP,3,0
+ID_23,Laboratorium PCR,3,15
+ID_24,Ruang Administrasi BPJS,3,10
