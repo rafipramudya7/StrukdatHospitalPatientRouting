@@ -41,13 +41,10 @@ javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java ; java -cp
 
 ---
 
-##  Code Fitur Utama 
+#  Code Fitur Utama 
 
 ####  tambahPasien() :
 fungsi untuk membuat pasien berdasarkan input user dan membangun sop yang tepat untuk runtutuan ruangan yang harus dituju pasien
-
-#### prosesNextTahap() : 
-fungsi untuk menggerakan pasien ke node selanjutnya. Selanjutnya untuk memperoleh node yang sesuai fungsi tersebut menjalankan bfsCariKategori() dan untuk mencari rute terbaik dijkstra()
 
 #### bfsCariKategori() : 
 fungsi untuk mencari node dengan kategori yang sesuai dan membangun jalur menuju node tersebut. lalu menyimpannya di sebuah list kandidat.
@@ -56,7 +53,7 @@ fungsi untuk mencari node dengan kategori yang sesuai dan membangun jalur menuju
 Setelah mendapatkan list kandidat program mencari rute terpendek yang dapat dijangkau menggunakan algoritma dijkstra. Algoritma ini bekerja dengan cara mencoba membandingkan semua rute dan menyimpan hasil rute terbaik didalam sebuah class HasilDijstra yang berisi array distance terbaik dan prev node.
 
 #### refresh() :
-Dikarenakan didalam real case pasien dalam sebuah node itu bukan hanya anri namun juga melakukan sebuah proses dengan kata lain harus real time. untuk mengakali hal tersebut kita menggunakna sistem refresh yang dilakukan ketika user melakukan input , sehingga menciptakan data seolah olah realtime. 
+Dikarenakan didalam real case pasien dalam sebuah node itu bukan hanya antri namun juga melakukan sebuah proses dengan kata lain harus real time. untuk mengakali hal tersebut kita menggunakna sistem refresh yang dilakukan ketika user melakukan input , sehingga menciptakan data seolah olah realtime. 
 ```java
     static void refresh(int now) {
         while (!eventQueue.isEmpty() && eventQueue.peek().waktuSelesai <= now) {
