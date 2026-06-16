@@ -174,4 +174,15 @@ public class Graph {
         Collections.reverse(jalur);
         return jalur;
     }
+
+    public List<Ruangan> cariRuangan(String prefix) {
+        List<Ruangan> hasil = new ArrayList<>();
+
+        for(Ruangan r : nodes.values()){
+            if(r.nama.toLowerCase().startsWith(prefix.toLowerCase())){
+                hasil.add(r);
+            }
+        }
+        return hasil;
+    }
 }
