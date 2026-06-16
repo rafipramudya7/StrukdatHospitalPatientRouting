@@ -1,7 +1,6 @@
 package src.graph;
 
 import java.util.*;
-
 import src.heap.MinHeapDijkstra;
 import src.model.Ruangan;
 
@@ -26,7 +25,7 @@ public class Graph {
 
     public static class HasilBFS {
         public int nodeId, hop;
-        List<Integer> jalur;
+        public List<Integer> jalur;
 
         HasilBFS(int nodeId, int hop, List<Integer> jalur) {
             this.nodeId = nodeId;
@@ -42,6 +41,7 @@ public class Graph {
         Queue<Integer> queue = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
 
+        System.out.println("\n--- START BFS TRACING (Mencari Kategori: " + kategori + ") ---");
         visited.add(start);
         hop.put(start, 0);
         queue.add(start);
@@ -49,9 +49,11 @@ public class Graph {
         while (!queue.isEmpty()) {
             int cur = queue.poll();
             Ruangan r = nodes.get(cur);
+            System.out.println("  [BFS POLL] Mengecek Node #" + cur + " (" + r.nama + ") | Queue Sisa: " + queue);
 
             if (cur != start && r.kategori.equals(kategori)
                     && (subKategori == null || subKategori.equals(r.subKategori))) {
+                System.out.println("    >> [FOUND] Cocok! Menemukan ruangan target: " + r.nama);
                 hasil.add(new HasilBFS(cur, hop.get(cur), bangunJalur(parent, start, cur)));
             }
 
@@ -62,6 +64,7 @@ public class Graph {
                     hop.put(next, hop.get(cur) + 1);
                     parent.put(next, cur);
                     queue.add(next);
+                    System.out.println("    -> Tetangga #" + next + " (" + nodes.get(next).nama + ") belum dikunjungi. Masuk Queue.");
                 }
             }
         }
@@ -130,21 +133,29 @@ public class Graph {
         Arrays.fill(prev, -1);
         dist[start] = 0;
 
+        System.out.println("\n--- START DIJKSTRA TRACING (Mencari Rute Tercepat dari " + nodes.get(start).nama + ") ---");
         MinHeapDijkstra pq = new MinHeapDijkstra();
         pq.insert(start, 0);
 
         while (!pq.isEmpty()) {
             int[] top = pq.extractMin();
             int u = top[0], d = top[1];
+            System.out.println("  [DIJKSTRA POP] Node #" + u + " (" + nodes.get(u).nama + ") tereksekusi dengan jarak sementara = " + d);
+
             if (d > dist[u])
                 continue;
 
             for (int[] tetangga : adj.get(u)) {
                 int v = tetangga[0], w = tetangga[1];
+                System.out.println("    -> Cek jalur ke tetangga #" + v + " (" + nodes.get(v).nama + ") lewat #" + u + " | Bobot lorong = " + w);
                 if (dist[u] != Integer.MAX_VALUE && dist[u] + w < dist[v]) {
+                    int jarakLama = dist[v];
                     dist[v] = dist[u] + w;
                     prev[v] = u;
+                    System.out.println("       [RELAXATION] Jarak ke " + nodes.get(v).nama + " BERHASIL DIPERBAIKI! " + (jarakLama == Integer.MAX_VALUE ? "∞" : jarakLama) + " -> " + dist[v]);
                     pq.insert(v, dist[v]);
+                } else {
+                    System.out.println("       [SKIP] Jalur lewat #" + u + " (" + (dist[u] + w) + ") tidak lebih cepat dari data saat ini (" + (dist[v] == Integer.MAX_VALUE ? "∞" : dist[v]) + ")");
                 }
             }
         }
