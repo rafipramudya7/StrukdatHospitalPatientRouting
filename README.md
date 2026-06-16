@@ -25,5 +25,5 @@ javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java src/TestMa
 ### Run Trace Heap
 
 ```
-javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java src/TestEdgeCase.java ; java src.TestEdgeCase
+javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java src/TestDisconnectedGraph.java ; java src.TestDisconnectedGraph
 ```
