@@ -57,7 +57,7 @@ public class Main {
 
             if (!ev.valid) {
                 System.out.println("[SKIP t=" + now + "] Event lama " + ev.pasien.nama
-                        + " di ruangan #" + ev.ruanganId + " diabaikan (sudah di-reschedule).");
+                        + " di ruangan #" + ev.ruanganId + " diabaikan (sudah di reschedule).");
                 continue;
             }
 
@@ -90,7 +90,7 @@ public class Main {
     static void prosesNextTahap(Pasien p, int now) {
         if (p.sop == null || p.tahapSaatIni >= p.sop.size()) {
             System.out.println("\n[SELESAI t=" + now + "] " + p.nama
-                    + " telah menyelesaikan seluruh layanan. Terima kasih!");
+                    + " telah menyelesaikan seluruh layanan!");
             return;
         }
 
@@ -101,7 +101,7 @@ public class Main {
         System.out.println("\n[t=" + now + "] " + p.nama
                 + " → mencari " + kategori
                 + (subKategori != null ? " (" + subKategori + ")" : "")
-                + " dari posisi node #" + p.currentNode + " ("
+                + " dari posisi node " + p.currentNode + " ("
                 + graph.nodes.get(p.currentNode).nama + ")");
         List<Graph.HasilBFS> kandidat = graph.bfsCariKategori(p.currentNode, kategori, subKategori);
         if (kandidat.isEmpty()) {
@@ -214,7 +214,7 @@ public class Main {
         }
 
         System.out.println("Apakah pasien dalam kondisi darurat?");
-        System.out.println("1. Ya (Darurat)");
+        System.out.println("1. Ya");
         System.out.println("2. Tidak");
         System.out.print("Pilih: ");
         int darurat = bacaInt();
@@ -224,9 +224,9 @@ public class Main {
         boolean butuhLab = false;
 
         if (darurat != 1) {
-            System.out.println("Apa keperluan pasien?");
+            System.out.println("Apa keperluan pasien");
             System.out.println("1. Cek kesehatan umum");
-            System.out.println("2. Ada keluhan / sakit tertentu");
+            System.out.println("2. Ada sakit tertentu");
             System.out.print("Pilih: ");
             int keperluan = bacaInt();
 
@@ -284,7 +284,7 @@ public class Main {
         if (darurat == 1) {
             sop.add(new String[] { "IGD", null });
 
-            System.out.println("\nSetelah stabil di IGD, pasien dirujuk ke:");
+            System.out.println("\nSetelah  di IGD, pasien dirujuk ke:");
             System.out.println("1. Jantung");
             System.out.println("2. Saraf");
             System.out.println("3. THT");
@@ -386,7 +386,7 @@ public class Main {
             try {
                 return Integer.parseInt(sc.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.print("Input harus angka, ulangi: ");
+                System.out.print("Input harus angka : ");
             }
         }
     }
