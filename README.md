@@ -41,10 +41,11 @@ javac src/Main.java src/graph/*.java src/model/*.java src/heap/*.java ; java -cp
 
 ---
 
-#  Code Fitur Utama 
+##  Code Fitur Utama 
 
 ####  tambahPasien() :
 fungsi untuk membuat pasien berdasarkan input user dan membangun sop yang tepat untuk runtutuan ruangan yang harus dituju pasien
+
 
 #### bfsCariKategori() : 
 fungsi untuk mencari node dengan kategori yang sesuai dan membangun jalur menuju node tersebut. lalu menyimpannya di sebuah list kandidat.
